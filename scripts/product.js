@@ -1,4 +1,58 @@
-//pobrac z adresu ID
+// API URL
+const api = 'http://localhost:3000/';
+const camerasApi = `${api}api/cameras/`;
 
-const id = window.URL.split('?id=')[1]
+const id = document.URL.split("=")[1];
+const itemDisplay = document.querySelector('#item-display')
+
+async function getContent(query) {
+    const response = await fetch(query);
+    const data = await response.json();
+    return data;
+}
+
+
+function displayItem(items) {
+    itemDisplay.innerHTML = 'Loading...'
+
+    items.forEach(item => {
+        if (id === item._id) {
+            //converting price to dollars
+            let dollars = item.price / 100
+            dollars = dollars.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD"
+            });
+            itemDisplay.innerHTML = `<div class="row my-5">
+                <div class="col-4 my-5 pb-5">
+                    <img src="${item.imageUrl}" alt="${item.name}" class="card-img-top my-4">
+                </div>
+                <div class="col-6">
+                    <h1 class="mt-5">${item.name}</h1>
+                    <div class="price font-weight-bold mb-2">${dollars}</div>
+                    <label for="lenses" class="mb-4">Lenses:</label>
+                    <select name="lenses" id="lenses">
+                        <option value="oak">Oak</option>
+                        <option value="walnut">Walnut</option>
+                        <option value="Pine">Pine</option>
+                    </select>
+                    <p>${item.description}</p>
+                </div>
+                <div class="col2 mt-5 pt-5">
+                    <a href="cart.html" class="btn btn-primary">Add to Cart</a>
+                </div>`
+        }
+    });
+}
+
+async function fetchAndDisplayItem(query) {
+    await getContent(query).then(items => {
+        displayItem(items);
+    })
+
+}
+
+fetchAndDisplayItem(camerasApi);
+
+
 // rest
