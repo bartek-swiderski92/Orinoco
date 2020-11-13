@@ -38,28 +38,56 @@ const itemsGrid = document.querySelector('#items-grid');
 
 
 
+// async function getContent(query) {
+//     const response = await fetch(query)
+//     const data = await response.json();
+//     return data;
+// };
+
+// async function displayContent(items) {
+//     itemsGrid.innerHTML = 'Loading...';
+//     console.log('Creating HTML...');
+//     const htmlContent = await items.map(item => {
+//         /*html*/
+//         `${item.name}`
+//     });
+//     console.log(htmlContent);
+// };
+
+// async function fetchAndDisplay(query) {
+//     const items = await getContent(query)
+//         .then((items) => {
+//             console.log(items);
+//             displayContent(items);
+
+//         });
+// };
+// fetchAndDisplay(camerasApi);
+
 async function getContent(query) {
-    const response = await fetch(query)
+    const response = await fetch(query);
     const data = await response.json();
     return data;
-};
+}
 
-async function displayContent(items) {
-    itemsGrid.innerHTML = 'Loading...';
-    console.log('Creating HTML...');
-    const htmlContent = await items.map(item => {
+function displayContent(items) {
+    itemsGrid.innerHTML = "Loading...";
+    console.log("Creating HTML...");
+    const htmlContent = items.map(item =>
+
         /*html*/
-        `${item.name}`
-    });
+        `<div>${
+            item.name
+        }</div>`
+
+    );
     console.log(htmlContent);
-};
+}
 
 async function fetchAndDisplay(query) {
-    const items = await getContent(query)
-        .then((items) => {
-            console.log(items);
-            displayContent(items);
-
-        });
-};
+    await getContent(query).then(items => {
+        console.log(items);
+        displayContent(items);
+    });
+}
 fetchAndDisplay(camerasApi);
