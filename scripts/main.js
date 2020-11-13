@@ -32,11 +32,7 @@ const itemsGrid = document.querySelector('#items-grid');
 //     const cameraItemPromise = makeRequest('GET', camerasApi);
 //     // const cameraItemResponse = await Promise(cameraItemPromise);
 //     await console.log(cameraItemPromise);
-
 // };
-
-
-
 
 // async function getContent(query) {
 //     const response = await fetch(query)
@@ -59,7 +55,6 @@ const itemsGrid = document.querySelector('#items-grid');
 //         .then((items) => {
 //             console.log(items);
 //             displayContent(items);
-
 //         });
 // };
 // fetchAndDisplay(camerasApi);
@@ -73,17 +68,21 @@ async function getContent(query) {
 function displayContent(items) {
     itemsGrid.innerHTML = "Loading...";
     console.log("Creating HTML...");
-    const htmlContent = items.map(item =>
+    const htmlContent = items.map(item => 
+    /*html*/ `
+        <div class="col-12 col-lg-4 my-3">
+            <div class="card mb-4mb-lg-0 shadow border-muted">
+                <img src="${item.imageUrl}" alt="${item.name}" class="card-img-top my-4">
+                <h5 class="card-title m-4">${item.name}</h5>
+                <p class="card-text mx-4">${item.description}</p>
+                <a href="product.html?id=${item._id}" class="btn btn-primary stretched-link mx-3 mt-2 mb-4">View Product</a>
+            </div>
+        </div>`).join('');
+    console.log(htmlContent[2]);
+    itemsGrid.innerHTML = htmlContent;
+} {
 
-        /*html*/
-        `<div>${
-            item.name
-        }</div>`
-
-    );
-    console.log(htmlContent);
 }
-
 async function fetchAndDisplay(query) {
     await getContent(query).then(items => {
         console.log(items);
