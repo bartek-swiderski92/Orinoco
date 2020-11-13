@@ -3,7 +3,8 @@ const api = 'http://localhost:3000/';
 const camerasApi = `${api}api/cameras/`;
 
 const id = document.URL.split("=")[1];
-const itemDisplay = document.querySelector('#item-display')
+const itemDisplay = document.getElementById('item-display')
+
 
 async function getContent(query) {
     const response = await fetch(query);
@@ -23,6 +24,8 @@ function displayItem(items) {
                 style: "currency",
                 currency: "USD"
             });
+
+
             itemDisplay.innerHTML = `<div class="row my-5">
                 <div class="col-4 my-5 pb-5">
                     <img src="${item.imageUrl}" alt="${item.name}" class="card-img-top my-4">
@@ -32,15 +35,21 @@ function displayItem(items) {
                     <div class="price font-weight-bold mb-2">${dollars}</div>
                     <label for="lenses" class="mb-4">Lenses:</label>
                     <select name="lenses" id="lenses">
-                        <option value="oak">Oak</option>
-                        <option value="walnut">Walnut</option>
-                        <option value="Pine">Pine</option>
                     </select>
                     <p>${item.description}</p>
                 </div>
                 <div class="col2 mt-5 pt-5">
                     <a href="cart.html" class="btn btn-primary">Add to Cart</a>
-                </div>`
+                </div>`;
+            const lensesOptions = document.querySelector('#lenses');
+            item.lenses.forEach(lens => {
+                const optionElement = document.createElement('option');
+                optionElement.value = lens;
+                optionElement.innerHTML = lens;
+                console.log(optionElement);
+                lensesOptions.appendChild(optionElement)
+            });
+
         }
     });
 }
