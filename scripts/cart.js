@@ -70,16 +70,33 @@ function displayItems(items) {
     }
 }
 
-// function displayTotalPrice() {
+function displayTotalPrice() {
+    const itemPrices = document.querySelectorAll(`[data-item-price]`)
+    // [3].dataset.itemPrice
+    let totalPrice = 0;
+    itemPrices.forEach(itemPrice => {
+        totalPrice += itemPrice.dataset.itemPrice * 1
+    });
+    //converts price to dollars
+    let totalPriceDollars = totalPrice / 100
+    totalPriceDollars = totalPriceDollars.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+    });
+    console.log(totalPriceDollars);
+    const totalPriceElement = document.querySelector('#total-price')
+    totalPriceElement.textContent = `Total: ${totalPriceDollars}`
+}
 
-// }
 
 function displayCart(query) {
     if (localStorage.length > 0) {
         console.log('cart is full');
         generateNodes();
-        getContent(query).then(items => displayItems(items))
-
+        getContent(query).then(items => {
+            displayItems(items)
+            displayTotalPrice();
+        })
 
     } else {
         console.log('cart is empty');
