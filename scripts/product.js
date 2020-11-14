@@ -46,7 +46,6 @@ function displayItem(items) {
                 const optionElement = document.createElement('option');
                 optionElement.value = lens;
                 optionElement.innerHTML = lens;
-                console.log(optionElement);
                 lensesOptions.appendChild(optionElement)
             });
 
