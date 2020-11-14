@@ -55,10 +55,19 @@ function displayItem(items) {
 }
 
 async function fetchAndDisplayItem(query) {
+    itemDisplay.innerHTML = `<div class="text-center mt-5 p-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>`;
     await getContent(query).then(items => {
         displayItem(items);
+    }).catch((error) => {
+        console.log(error);
+        itemDisplay.innerHTML = `<i class="fas fa-times-circle pr-3" style="font-size:25px"></i>  Unable to load Content! Please try again later or contact website administrator.`;
+        itemDisplay.classList.add('bg-danger',
+            'text-light', 'text-center', 'mt-5', 'p-3')
     })
-
 }
 
 fetchAndDisplayItem(camerasApi);

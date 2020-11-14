@@ -59,6 +59,7 @@ const itemsGrid = document.querySelector('#items-grid');
 // };
 // fetchAndDisplay(camerasApi);
 
+
 async function getContent(query) {
     const response = await fetch(query);
     const data = await response.json();
@@ -66,10 +67,9 @@ async function getContent(query) {
 }
 
 function displayContent(items) {
-    itemsGrid.innerHTML = "Loading...";
     console.log("Creating HTML...");
-    const htmlContent = items.map(item => 
-    /*html*/ `
+    const htmlContent = items.map(item =>
+        /*html*/`
         <div class="col-12 col-lg-4 my-3">
             <div class="card mb-4mb-lg-0 shadow border-muted">
                 <img src="${item.imageUrl}" alt="${item.name}" class="card-img-top my-4">
@@ -84,9 +84,21 @@ function displayContent(items) {
 
 }
 async function fetchAndDisplay(query) {
+    itemsGrid.innerHTML = `<div class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>`;
+
     await getContent(query).then(items => {
-        console.log(items);
-        displayContent(items);
-    });
+            console.log(items);
+            displayContent(items);
+        })
+        .catch((error) => {
+            console.log(error);
+            itemsGrid.innerHTML = `<i class="fas fa-times-circle pr-3" style="font-size:25px"></i>  Unable to load Content! Please try again later or contact website administrator.`;
+            itemsGrid.classList.add('bg-danger',
+                'text-light')
+        })
 }
 fetchAndDisplay(camerasApi);
