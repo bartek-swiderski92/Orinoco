@@ -3,9 +3,7 @@ const api = 'http://localhost:3000/';
 const camerasApi = `${api}api/cameras/`;
 
 const id = document.URL.split("=")[1];
-const itemDisplay = document.getElementById('item-display')
-
-
+const itemDisplay = document.getElementById('item-display');
 async function getContent(query) {
     const response = await fetch(query);
     const data = await response.json();
@@ -18,7 +16,7 @@ function displayItem(items) {
 
     items.forEach(item => {
         if (id === item._id) {
-            //converting price to dollars
+            //converts price to dollars
             let dollars = item.price / 100
             dollars = dollars.toLocaleString("en-US", {
                 style: "currency",
@@ -39,16 +37,32 @@ function displayItem(items) {
                     <p>${item.description}</p>
                 </div>
                 <div class="col2 mt-5 pt-5">
-                    <a href="cart.html" class="btn btn-primary">Add to Cart</a>
+                    <button id="add-to-cart" class="btn btn-primary">Add to Cart</button>
+
                 </div>`;
+            // Generates lenses options
             const lensesOptions = document.querySelector('#lenses');
             item.lenses.forEach(lens => {
                 const optionElement = document.createElement('option');
                 optionElement.value = lens;
                 optionElement.innerHTML = lens;
                 lensesOptions.appendChild(optionElement)
-            });
 
+
+            });
+            // Adds listener to Add to Cart Button
+            let addToCartBtn = document.querySelector('#add-to-cart');
+
+            function addToCart() {
+                let noOfItemsInBasket = localStorage.length;
+
+                localStorage.setItem(`item ${noOfItemsInBasket + 1}`, `${item._id}`);
+                console.log(noOfItemsInBasket);
+
+                // directs to cart
+                window.location.href = "http://127.0.0.1:50457/cart.html";
+            };
+            addToCartBtn.addEventListener('click', addToCart);
         }
     });
 }
@@ -70,6 +84,3 @@ async function fetchAndDisplayItem(query) {
 }
 
 fetchAndDisplayItem(camerasApi);
-
-
-// rest
