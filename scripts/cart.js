@@ -105,3 +105,5 @@ function displayCart(query) {
 }
 
 displayCart(camerasApi);
+
+//TODO: form validation
