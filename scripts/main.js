@@ -102,3 +102,5 @@ async function fetchAndDisplay(query) {
         })
 }
 fetchAndDisplay(camerasApi);
+
+//TODO: file structure
