@@ -55,7 +55,7 @@ function displayItem(items) {
 
             function addToCart() {
                 let noOfItemsInBasket = localStorage.length;
-
+                //TODO: stringify local storage
                 localStorage.setItem(`item-${noOfItemsInBasket + 1}`, `${item._id}`);
                 console.log(noOfItemsInBasket);
 
