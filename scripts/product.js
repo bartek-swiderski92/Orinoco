@@ -59,8 +59,8 @@ function displayItem(items) {
                 localStorage.setItem(`item-${noOfItemsInBasket + 1}`, `${item._id}`);
                 console.log(noOfItemsInBasket);
 
-                // directs to cart
-                window.location.href = "http://127.0.0.1:50457/cart.html";
+                //FIXME: directs to cart
+                window.location.href = `/cart.html`;
             };
             addToCartBtn.addEventListener('click', addToCart);
         }
