@@ -23,15 +23,7 @@ function generateNodes() {
 
 }
 
-async function getContent(query) {
-    const response = await fetch(query);
-    const data = await response.json();
-    return data;
-}
-
 function displayItems(items) {
-    console.log('displaying items');
-    console.log(items);
     const itemNodes = document.querySelectorAll('.item-node');
     for (let i = 0; i < itemNodes.length; i++) {
         let datasetId = itemNodes[i].dataset.itemId
@@ -73,7 +65,6 @@ function displayTotalPrice() {
 
 function displayCart(query) {
     if (localStorage.length > 0) {
-        console.log('cart is full');
         generateNodes();
         getContent(query).then(items => {
             displayItems(items)

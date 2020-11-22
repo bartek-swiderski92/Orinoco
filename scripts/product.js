@@ -1,11 +1,5 @@
 const id = document.URL.split("=")[1];
 const itemDisplay = document.getElementById('item-display');
-async function getContent(query) {
-    const response = await fetch(query);
-    const data = await response.json();
-    return data;
-}
-
 
 function displayItem(items) {
     itemDisplay.innerHTML = 'Loading...'

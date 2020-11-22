@@ -1,4 +1,3 @@
-
 // DOM ELEMENTS
 const itemsGrid = document.querySelector('#items-grid');
 
@@ -56,17 +55,11 @@ const itemsGrid = document.querySelector('#items-grid');
 // };
 // fetchAndDisplay(camerasApi);
 
-
-async function getContent(query) {
-    const response = await fetch(query);
-    const data = await response.json();
-    return data;
-}
-
 function displayContent(items) {
     console.log("Creating HTML...");
     const htmlContent = items.map(item =>
-        /*html*/`
+        /*html*/
+        `
         <div class="col-12 col-lg-4 my-3">
             <div class="card mb-4mb-lg-0 shadow border-muted">
                 <img src="${item.imageUrl}" alt="${item.name}" class="card-img-top my-4">
@@ -87,7 +80,8 @@ async function fetchAndDisplay(query) {
     </div>
   </div>`;
 
-    await getContent(query).then(items => {
+    await getContent(query)
+        .then(items => {
             console.log(items);
             displayContent(items);
         })
