@@ -15,11 +15,9 @@ function generateNodes() {
         itemEl.classList.add('row', 'item-node');
         itemEl.dataset.itemId = `${localStorage.getItem(`item-${i}`)}`
         cartContent.appendChild(itemEl);
-        // itemEl.innerHTML = localStorage.getItem(`<div>test</div>`)
         document.querySelector(`#item-no-${i}`).innerHTML = `<div>${localStorage.getItem(`item-${i}`)}</div>`
     }
     for (let i = 1; i < localStorage.length + 1; i++) {
-        console.log(localStorage.getItem(`item-${i}`));
         generateItemNode(i);
     }
 
@@ -49,7 +47,7 @@ function displayItems(items) {
                         <div class="col-5 col-md-8">
                             <h3 class="mt-3">${item.name}</h3>
                             <div class="h5 font-weight-bold mt-3" data-item-price="${item.price}">${dollars}</div>
-                            <a href="#" class="btn btn-danger my-4">Remove from cart</a>
+                            <a href="#" class="btn btn-warning my-4">Remove from cart</a>
                         </div>
                         <!-- <div class="col col-md-2 mx-4 mb-4 mt-md-5"> -->
                         <!-- </div> -->
