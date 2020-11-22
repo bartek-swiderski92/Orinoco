@@ -1,7 +1,3 @@
-// API URL
-const api = 'http://localhost:3000/';
-const camerasApi = `${api}api/cameras/`;
-
 const cartContent = document.querySelector('#cart-content');
 // const basketSpinner = document.querySelector('#basket-spinner');
 // cartContent.innerHTML = `<div class="text-center p-5">
@@ -43,12 +39,7 @@ function displayItems(items) {
         let datasetId = itemNodes[i].dataset.itemId
         items.forEach(item => {
             if (datasetId === item._id) {
-                //converts price to dollars
-                let dollars = item.price / 100
-                dollars = dollars.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD"
-                });
+                let dollars = priceToDollars(item.price)
                 itemNodes[i].innerHTML = ` <div class="col">
                 <div class="container ">
                     <div class="row my-2 shadow border border-warning">
@@ -77,17 +68,10 @@ function displayTotalPrice() {
     itemPrices.forEach(itemPrice => {
         totalPrice += itemPrice.dataset.itemPrice * 1
     });
-    //converts price to dollars
-    let totalPriceDollars = totalPrice / 100
-    totalPriceDollars = totalPriceDollars.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD"
-    });
-    console.log(totalPriceDollars);
+    let totalPriceDollars = priceToDollars(totalPrice)
     const totalPriceElement = document.querySelector('#total-price')
     totalPriceElement.textContent = `Total: ${totalPriceDollars}`
 }
-
 
 function displayCart(query) {
     if (localStorage.length > 0) {

@@ -1,7 +1,3 @@
-// API URL
-const api = 'http://localhost:3000/';
-const camerasApi = `${api}api/cameras/`;
-
 const id = document.URL.split("=")[1];
 const itemDisplay = document.getElementById('item-display');
 async function getContent(query) {
@@ -16,13 +12,7 @@ function displayItem(items) {
 
     items.forEach(item => {
         if (id === item._id) {
-            //converts price to dollars
-            let dollars = item.price / 100
-            dollars = dollars.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD"
-            });
-
+            let dollars = priceToDollars(item.price)
 
             itemDisplay.innerHTML = `<div class="row my-5">
                 <div class="col-4 my-5 pb-5">
@@ -58,8 +48,6 @@ function displayItem(items) {
                 //TODO: stringify local storage
                 localStorage.setItem(`item-${noOfItemsInBasket + 1}`, `${item._id}`);
                 console.log(noOfItemsInBasket);
-
-                //FIXME: directs to cart
                 window.location.href = `/cart.html`;
             };
             addToCartBtn.addEventListener('click', addToCart);

@@ -1,6 +1,3 @@
-// API URL
-const api = 'http://localhost:3000/';
-const camerasApi = `${api}api/cameras/`;
 
 // DOM ELEMENTS
 const itemsGrid = document.querySelector('#items-grid');
