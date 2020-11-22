@@ -8,7 +8,6 @@ const cartContent = document.querySelector('#cart-content');
 // basketSpinner.style.display = 'none'
 
 function generateNodes() {
-
     function generateItemNode(i) {
         const itemEl = document.createElement('div');
         itemEl.id = `item-no-${i}`;
@@ -17,10 +16,10 @@ function generateNodes() {
         cartContent.appendChild(itemEl);
         document.querySelector(`#item-no-${i}`).innerHTML = `<div>${localStorage.getItem(`item-${i}`)}</div>`
     }
+
     for (let i = 1; i < localStorage.length + 1; i++) {
         generateItemNode(i);
     }
-
 }
 
 function displayItems(items) {

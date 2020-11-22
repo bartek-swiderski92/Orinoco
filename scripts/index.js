@@ -70,10 +70,10 @@ function displayContent(items) {
         </div>`).join('');
     console.log(htmlContent[2]);
     itemsGrid.innerHTML = htmlContent;
-} {
+};
 
-}
 async function fetchAndDisplay(query) {
+    // Displaying loading animation
     itemsGrid.innerHTML = `<div class="text-center">
     <div class="spinner-border text-primary" role="status">
       <span class="sr-only">Loading...</span>
@@ -87,11 +87,13 @@ async function fetchAndDisplay(query) {
         })
         .catch((error) => {
             console.log(error);
+            // displaying error in DOM
             itemsGrid.innerHTML = `<i class="fas fa-times-circle pr-3" style="font-size:25px"></i>  Unable to load Content! Please try again later or contact website administrator.`;
             itemsGrid.classList.add('bg-danger',
                 'text-light')
         })
 }
+
 fetchAndDisplay(camerasApi);
 
 //TODO: file structure

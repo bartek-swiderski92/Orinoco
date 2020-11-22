@@ -30,9 +30,7 @@ function displayItem(items) {
                 const optionElement = document.createElement('option');
                 optionElement.value = lens;
                 optionElement.innerHTML = lens;
-                lensesOptions.appendChild(optionElement)
-
-
+                lensesOptions.appendChild(optionElement);
             });
             // Adds listener to Add to Cart Button
             let addToCartBtn = document.querySelector('#add-to-cart');
