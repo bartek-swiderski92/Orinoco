@@ -48,11 +48,8 @@ function displayItem(items) {
 }
 
 async function fetchAndDisplayItem(query) {
-    itemDisplay.innerHTML = `<div class="text-center mt-5 p-5">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>`;
+    itemDisplay.innerHTML = loadingAnimation;
+
     await getContent(query).then(items => {
         displayItem(items);
     }).catch((error) => {

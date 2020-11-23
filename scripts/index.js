@@ -74,11 +74,7 @@ function displayContent(items) {
 
 async function fetchAndDisplay(query) {
     // Displaying loading animation
-    itemsGrid.innerHTML = `<div class="text-center">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>`;
+    itemsGrid.innerHTML = loadingAnimation;
 
     await getContent(query)
         .then(items => {

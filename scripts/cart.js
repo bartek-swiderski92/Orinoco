@@ -63,6 +63,7 @@ function displayTotalPrice() {
 }
 
 function displayCart(query) {
+    
     if (localStorage.length > 0) {
         generateNodes();
         getContent(query).then(items => {
