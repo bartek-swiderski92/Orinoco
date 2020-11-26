@@ -8,18 +8,19 @@ const cartContent = document.querySelector('#cart-content');
 // basketSpinner.style.display = 'none'
 
 function generateNodes() {
-    function generateItemNode(i) {
-        const itemEl = document.createElement('div');
-        itemEl.id = `item-no-${i}`;
-        itemEl.classList.add('row', 'item-node');
-        itemEl.dataset.itemId = `${localStorage.getItem(`item-${i}`)}`
-        cartContent.appendChild(itemEl);
-        document.querySelector(`#item-no-${i}`).innerHTML = `<div>${localStorage.getItem(`item-${i}`)}</div>`
-    }
 
-    for (let i = 1; i < localStorage.length + 1; i++) {
-        generateItemNode(i);
+    if (localStorage.getItem('basket')) {
+        basketContent = JSON.parse(localStorage.getItem('basket'))
+        cartContent.innerHTML = '';
+        for (let i = 0; i < basketContent.length; i++) {
+            const itemEl = document.createElement('div');
+            itemEl.id = `item-no-${i}`
+            itemEl.classList.add('row', 'item-node');
+            itemEl.dataset.itemId = basketContent[i];
+            cartContent.appendChild(itemEl);
+        }
     }
+    enableForm();
 }
 
 function displayItems(items) {
@@ -50,6 +51,13 @@ function displayItems(items) {
     }
 }
 
+function enableForm() {
+    const inputElements = document.querySelectorAll('.input-element')
+    inputElements.forEach(inputElement => {
+        inputElement.removeAttribute('disabled');
+    });
+}
+
 function displayTotalPrice() {
     const itemPrices = document.querySelectorAll(`[data-item-price]`)
     // [3].dataset.itemPrice
@@ -63,7 +71,7 @@ function displayTotalPrice() {
 }
 
 function displayCart(query) {
-    
+
     if (localStorage.length > 0) {
         generateNodes();
         getContent(query).then(items => {
