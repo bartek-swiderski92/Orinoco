@@ -1,5 +1,6 @@
 const id = document.URL.split("=")[1];
 const itemDisplay = document.getElementById('item-display');
+let basketContent;
 
 function displayItem(items) {
     itemDisplay.innerHTML = 'Loading...'
@@ -36,10 +37,16 @@ function displayItem(items) {
             let addToCartBtn = document.querySelector('#add-to-cart');
 
             function addToCart() {
-                let noOfItemsInBasket = localStorage.length;
                 //TODO: stringify local storage
-                localStorage.setItem(`item-${noOfItemsInBasket + 1}`, `${item._id}`);
-                console.log(noOfItemsInBasket);
+                // localStorage.setItem(`item-${noOfItemsInBasket + 1}`, `${item._id}`);
+                if (!localStorage.getItem('basket')) {
+                    basketContent = [];
+                } else {
+                    basketContent = JSON.parse(localStorage.getItem('basket'))
+                }
+                basketContent.push(item._id);
+                localStorage.setItem('basket', JSON.stringify(basketContent));
+
                 window.location.href = `/cart.html`;
             };
             addToCartBtn.addEventListener('click', addToCart);
