@@ -12,7 +12,7 @@ function generateNodes() {
     cartContent.innerHTML = '';
     for (let i = 0; i < basketContent.length; i++) {
         const itemEl = document.createElement('div');
-        itemEl.id = `item-index-${i}`
+        itemEl.id = `index-${i}`
         itemEl.classList.add('row', 'item-node');
         itemEl.dataset.itemId = basketContent[i];
         cartContent.appendChild(itemEl);
@@ -68,10 +68,10 @@ function displayTotalPrice() {
     totalPriceElement.textContent = `Total: ${totalPriceDollars}`
 }
 
-function displayCart(query) {
+async function displayCart(query) {
     if (localStorage.length > 0) {
         generateNodes();
-        getContent(query).then(items => {
+        await getContent(query).then(items => {
             displayItems(items)
             displayTotalPrice();
         })
@@ -79,8 +79,11 @@ function displayCart(query) {
 }
 
 function removeItem() {
-    console.log(this.closest('.item-node').id);
-
+    let itemIndex = this.closest('.item-node').id.split('-')[1];
+    basketContent.splice(itemIndex, 1)
+    console.log(basketContent);
+    localStorage.setItem('basket', JSON.stringify(basketContent));
+    displayCart(camerasApi);
 };
 
 displayCart(camerasApi);
