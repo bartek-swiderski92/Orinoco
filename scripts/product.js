@@ -37,8 +37,6 @@ function displayItem(items) {
             let addToCartBtn = document.querySelector('#add-to-cart');
 
             function addToCart() {
-                //TODO: stringify local storage
-                // localStorage.setItem(`item-${noOfItemsInBasket + 1}`, `${item._id}`);
                 if (!localStorage.getItem('basket')) {
                     basketContent = [];
                 } else {

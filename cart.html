@@ -53,14 +53,9 @@
         <div class="row">
             <div class="col">
                 <div class="container ">
-                    <div class="row my-2 shadow border border-warning">
-                        <div class="col-5 col-md-3 my-3">
-                            <img src="img/instruction.png" alt="certificate" class="img-fluid img-thumbnail">
-                        </div>
-                        <div class="col-5 col-md-8">
-                            <h3 class="mt-3">Dummy item</h3>
-                            <div class="h5 font-weight-bold mt-3">$237</div>
-                            <a href="#" class="btn btn-warning my-4">Remove from cart</a>
+                    <div class="row my-2 shadow border border-danger">
+                        <div class="col m-5">
+                            <h3 class="text-center">Your Basket is empty!</h3>
                         </div>
 
                     </div>
@@ -76,7 +71,7 @@
     <div class="container">
         <div class="row shadow my-4">
             <div class="col-3 my-5 ml-3">
-                <h3 class="font-weight-bold text-success" id="total-price">Total: $1000</h3>
+                <h3 class="font-weight-bold text-success" id="total-price">Total: $0</h3>
             </div>
             <div class="col my-5">
                 <form>
@@ -84,22 +79,27 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 col-md-5"> <label for="firstName">First Name:</label>
-                                    <input type="text" class="flow-control w-100 mx-2 mb-2" id="firstName" required><br>
+                                    <input disabled type="text" class="flow-control w-100 mx-2 mb-2 input-element"
+                                        id="firstName" required><br>
                                     <label for="lasttName">Last Name:</label>
-                                    <input type="text" class="flow-control w-100 mx-2 mb-2" id="lastName" required><br>
+                                    <input disabled type="text" class="flow-control w-100 mx-2 mb-2 input-element"
+                                        id="lastName" required><br>
                                     <label for="address">Address:</label>
-                                    <input type="text" class="flow-control w-100 mx-2" id="address" required><br>
+                                    <input disabled type="text" class="flow-control w-100 mx-2 input-element"
+                                        id="address" required><br>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <label for="city">City:</label>
-                                    <input type="text" class="flow-control  w-100 mx-2 mb-2" id="city" required><br>
+                                    <input disabled type="text" class="flow-control w-100 mx-2 mb-2 input-element"
+                                        id="city" required><br>
                                     <label for="email">Email address:</label>
-                                    <input type="email" class="flow-control w-100 mx-2 mb-2" id="email"
-                                        placeholder="name@example.com" required></col-6>
+                                    <input disabled type="email" class="flow-control w-100 mx-2 mb-2 input-element"
+                                        id="email" placeholder="name@example.com" required></col-6>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-5 ml-4 w-25">Buy Now</button>
+                        <button disabled type="submit" class="btn btn-primary mt-5 ml-4 w-25 input-element">Buy
+                            Now</button>
                 </form>
             </div>
         </div>
