@@ -8,19 +8,17 @@ const cartContent = document.querySelector('#cart-content');
 // basketSpinner.style.display = 'none'
 
 function generateNodes() {
-
-    if (localStorage.getItem('basket')) {
-        basketContent = JSON.parse(localStorage.getItem('basket'))
-        cartContent.innerHTML = '';
-        for (let i = 0; i < basketContent.length; i++) {
-            const itemEl = document.createElement('div');
-            itemEl.id = `item-no-${i}`
-            itemEl.classList.add('row', 'item-node');
-            itemEl.dataset.itemId = basketContent[i];
-            cartContent.appendChild(itemEl);
-        }
+    basketContent = JSON.parse(localStorage.getItem('basket'))
+    cartContent.innerHTML = '';
+    for (let i = 0; i < basketContent.length; i++) {
+        const itemEl = document.createElement('div');
+        itemEl.id = `item-index-${i}`
+        itemEl.classList.add('row', 'item-node');
+        itemEl.dataset.itemId = basketContent[i];
+        cartContent.appendChild(itemEl);
     }
     enableForm();
+
 }
 
 function displayItems(items) {
@@ -29,6 +27,7 @@ function displayItems(items) {
         let datasetId = itemNodes[i].dataset.itemId
         items.forEach(item => {
             if (datasetId === item._id) {
+                let itemIndex = 0;
                 let dollars = priceToDollars(item.price)
                 itemNodes[i].innerHTML = ` <div class="col">
                 <div class="container ">
@@ -39,16 +38,16 @@ function displayItems(items) {
                         <div class="col-5 col-md-8">
                             <h3 class="mt-3">${item.name}</h3>
                             <div class="h5 font-weight-bold mt-3" data-item-price="${item.price}">${dollars}</div>
-                            <a href="#" class="btn btn-warning my-4">Remove from cart</a>
+                            <button id="item-index-${itemIndex++}"class="btn btn-warning my-4 remove-btn">Remove from cart</button>
                         </div>
-                        <!-- <div class="col col-md-2 mx-4 mb-4 mt-md-5"> -->
-                        <!-- </div> -->
                     </div>
                 </div>
             </div>`
-            }
+            };
         });
-    }
+    };
+    const removeButtons = document.querySelectorAll('.remove-btn');
+    removeButtons.forEach(removeButton => removeButton.addEventListener('click', removeItem));
 }
 
 function enableForm() {
@@ -56,11 +55,10 @@ function enableForm() {
     inputElements.forEach(inputElement => {
         inputElement.removeAttribute('disabled');
     });
-}
+};
 
 function displayTotalPrice() {
     const itemPrices = document.querySelectorAll(`[data-item-price]`)
-    // [3].dataset.itemPrice
     let totalPrice = 0;
     itemPrices.forEach(itemPrice => {
         totalPrice += itemPrice.dataset.itemPrice * 1
@@ -71,19 +69,19 @@ function displayTotalPrice() {
 }
 
 function displayCart(query) {
-
     if (localStorage.length > 0) {
         generateNodes();
         getContent(query).then(items => {
             displayItems(items)
             displayTotalPrice();
         })
-
-    } else {
-        console.log('cart is empty');
-
     }
 }
+
+function removeItem() {
+    console.log(this.closest('.item-node').id);
+
+};
 
 displayCart(camerasApi);
 
