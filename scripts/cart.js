@@ -23,11 +23,11 @@ function generateNodes() {
 
 function displayItems(items) {
     const itemNodes = document.querySelectorAll('.item-node');
+    let itemIndex = 0;
     for (let i = 0; i < itemNodes.length; i++) {
         let datasetId = itemNodes[i].dataset.itemId
         items.forEach(item => {
             if (datasetId === item._id) {
-                let itemIndex = 0;
                 let dollars = priceToDollars(item.price)
                 itemNodes[i].innerHTML = ` <div class="col">
                 <div class="container ">
@@ -78,10 +78,9 @@ async function displayCart(query) {
     }
 }
 
-function removeItem() {
-    let itemIndex = this.closest('.item-node').id.split('-')[1];
+function removeItem(event) {
+    let itemIndex = event.target.id.split('-')[2];
     basketContent.splice(itemIndex, 1)
-    console.log(basketContent);
     localStorage.setItem('basket', JSON.stringify(basketContent));
     displayCart(camerasApi);
 };
