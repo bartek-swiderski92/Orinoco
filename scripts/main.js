@@ -1,6 +1,7 @@
 // API URL
 const api = 'http://localhost:3000/';
 const camerasApi = `${api}api/cameras/`;
+const cartSpan = document.querySelector('#cart');
 
 async function getContent(query) {
     const response = await fetch(query);
@@ -22,3 +23,15 @@ const loadingAnimation = `<div class="text-center">
   <span class="sr-only">Loading...</span>
 </div>
 </div>`;
+
+function displayCartSpan() {
+    if (localStorage.getItem('basket')) {
+        let cartNoOfItems = JSON.parse(localStorage.getItem('basket')).length
+        cartSpan.textContent = `Cart (${cartNoOfItems})`
+
+    } else {
+        cartSpan.textContent = 'Cart (0)'
+    }
+};
+
+displayCartSpan();

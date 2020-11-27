@@ -56,7 +56,6 @@ const itemsGrid = document.querySelector('#items-grid');
 // fetchAndDisplay(camerasApi);
 
 function displayContent(items) {
-    console.log("Creating HTML...");
     const htmlContent = items.map(item =>
         /*html*/
         `
@@ -68,7 +67,6 @@ function displayContent(items) {
                 <a href="product.html?id=${item._id}" class="btn btn-primary stretched-link mx-3 mt-2 mb-4">View Product</a>
             </div>
         </div>`).join('');
-    console.log(htmlContent[2]);
     itemsGrid.innerHTML = htmlContent;
 };
 
@@ -78,7 +76,6 @@ async function fetchAndDisplay(query) {
 
     await getContent(query)
         .then(items => {
-            console.log(items);
             displayContent(items);
         })
         .catch((error) => {

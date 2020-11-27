@@ -69,13 +69,14 @@ function displayTotalPrice() {
 }
 
 async function displayCart(query) {
-    if (localStorage.length > 0) {
+    if (localStorage.getItem('basket')) {
         generateNodes();
         await getContent(query).then(items => {
             displayItems(items)
             displayTotalPrice();
         })
     }
+    displayCartSpan();
 }
 
 function removeItem(event) {
