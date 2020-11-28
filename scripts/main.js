@@ -1,6 +1,8 @@
 // API URL
 const api = 'http://localhost:3000/';
 const camerasApi = `${api}api/cameras/`;
+const camerasApiOrder = `${camerasApi}order`
+
 const cartSpan = document.querySelector('#cart');
 
 async function getContent(query) {

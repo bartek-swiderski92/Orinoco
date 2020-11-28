@@ -88,4 +88,38 @@ function removeItem(event) {
 
 displayCart(camerasApi);
 
-//TODO: form validation
+const submitOrderBtn = document.querySelector('#submit-order');
+
+async function placeOrder(event) {
+    event.preventDefault();
+    console.log(event);
+    const products = basketContent;
+    const contact = {
+        firstName: document.querySelector('#firstName').value,
+        lastName: document.querySelector('#lastName').value,
+        address: document.querySelector('#address').value,
+        city: document.querySelector('#city').value,
+        email: document.querySelector('#email').value
+    }
+    console.log(contact);
+    console.log('placing order');
+    console.log(basketContent);
+    await fetch(camerasApiOrder, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                contact: contact,
+                products: products
+            })
+        })
+        .then(() => window.location.href = `/order.html`)
+        .then(response => {
+
+            console.log(response);
+        })
+    // .catch(error => console.log(error))
+};
+
+submitOrderBtn.addEventListener('click', placeOrder)
