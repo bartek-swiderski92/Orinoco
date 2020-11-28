@@ -74,7 +74,7 @@
                 <h3 class="font-weight-bold text-success" id="total-price">Total: $0</h3>
             </div>
             <div class="col my-5">
-                <form>
+                <form onsubmit="return placeOrder()" name="orderForm" method="post">
                     <div class="form-group">
                         <div class="container">
                             <div class="row">
@@ -98,7 +98,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button disabled type="submit" class="btn btn-primary mt-5 ml-4 w-25 input-element">Buy
+                        <button disabled type="submit" id="submit-order"
+                            class="btn btn-primary mt-5 ml-4 w-25 input-element">Buy
                             Now</button>
                 </form>
             </div>
