@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
+    <script defer src="./scripts/main.js"></script>
+    <script defer src="./scripts/order.js"></script>
     <title>Order | Orinoco</title>
 </head>
 
@@ -41,10 +42,10 @@
     <div class="container shadow my-5 border border-dark py-5">
         <div class="row">
             <div class="text-center col">
-                <h1 class="text-success h3">Order submitted!</h1>
-                <h2 class="h4">Total Price: <span class="font-weight-bold text-danger">$123</span></h2>
-                <h3 class="h4">Your Order ID: #1234-456</h3>
-                <p>Thank you for buying with Ornioco, please check your inbox for order details and tracking!</p>
+                <h1 class="text-success h3 font-weight-bold">Order submitted!</h1>
+                <h2 class="h4">Total Price: <span id="order-total" class="font-weight-bold text-danger">$123</span></h2>
+                <h3 class="h4">Your Order ID: <span id="order-id">#1234-456</span></h3>
+                <p>Thank you <span id="customer-name"></span> for buying with Ornioco, please check your inbox for order details and tracking!</p>
 
             </div>
         </div>
