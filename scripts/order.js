@@ -5,6 +5,7 @@ const customerNameEl = document.querySelector('#customer-name');
 
 const orderDetails = JSON.parse(localStorage.getItem('order'))
 const productList = orderDetails.products
+// TODO loading screen
 
 function displayOrderDetails(){
     console.log(orderDetails);

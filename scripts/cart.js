@@ -55,6 +55,7 @@ function enableForm() {
         inputElement.removeAttribute('disabled');
     });
 };
+// TODO loading screen
 
 function displayTotalPrice() {
     const itemPrices = document.querySelectorAll(`[data-item-price]`)
