@@ -18,7 +18,6 @@ function generateNodes() {
         cartContent.appendChild(itemEl);
     }
     enableForm();
-
 }
 
 function displayItems(items) {
@@ -92,7 +91,6 @@ const submitOrderBtn = document.querySelector('#submit-order');
 
 async function placeOrder(event) {
     event.preventDefault();
-    console.log(event);
     const products = basketContent;
     const contact = {
         firstName: document.querySelector('#firstName').value,
@@ -101,9 +99,6 @@ async function placeOrder(event) {
         city: document.querySelector('#city').value,
         email: document.querySelector('#email').value
     }
-    console.log(contact);
-    console.log('placing order');
-    console.log(basketContent);
     await fetch(camerasApiOrder, {
             method: "post",
             headers: {
@@ -114,12 +109,10 @@ async function placeOrder(event) {
                 products: products
             })
         })
+        .then(response => response.json())
+        .then(response => localStorage.setItem('order', JSON.stringify(response)))
         .then(() => window.location.href = `/order.html`)
-        .then(response => {
-
-            console.log(response);
-        })
-    // .catch(error => console.log(error))
+        .catch(error => console.log(error))
 };
 
-submitOrderBtn.addEventListener('click', placeOrder)
+submitOrderBtn.addEventListener('click', placeOrder);
