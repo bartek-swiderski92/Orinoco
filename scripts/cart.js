@@ -90,6 +90,8 @@ displayCart(camerasApi);
 const submitOrderBtn = document.querySelector('#submit-order');
 
 async function placeOrder(event) {
+
+    // TODO js validation
     event.preventDefault();
     const products = basketContent;
     const contact = {
@@ -116,3 +118,4 @@ async function placeOrder(event) {
 };
 
 submitOrderBtn.addEventListener('click', placeOrder);
+// FIXME Listner on submit?
