@@ -28,7 +28,7 @@ function formValidation(){
         
         }
     }
-}
+
 function generateNodes() {
     basketContent = JSON.parse(localStorage.getItem('basket'))
     cartContent.innerHTML = '';
