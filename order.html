@@ -39,14 +39,12 @@
 
     <!-- CONTENT  -->
 
-    <div class="container shadow my-5 border border-dark py-5">
+    <div class="container shadow my-5 border border-dark py-5" id="order-summary">
         <div class="row">
-            <div class="text-center col">
-                <h1 class="text-success h3 font-weight-bold">Order submitted!</h1>
-                <h2 class="h4">Total Price: <span id="order-total" class="font-weight-bold text-danger">$123</span></h2>
-                <h3 class="h4">Your Order ID: <span id="order-id">#1234-456</span></h3>
-                <p>Thank you <span id="customer-name"></span> for buying with Ornioco, please check your inbox for order details and tracking!</p>
-
+            <div class="col my-5 text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
             </div>
         </div>
     </div>

@@ -20,9 +20,10 @@ const priceToDollars = (price) => {
     return price
 };
 
-const loadingAnimation = `<div class="text-center">
+const loadingAnimation = `
+<div class="col py-5 my-5 text-center">
 <div class="spinner-border text-primary" role="status">
-  <span class="sr-only">Loading...</span>
+    <span class="sr-only">Loading...</span>
 </div>
 </div>`;
 

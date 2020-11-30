@@ -69,12 +69,27 @@ function displayTotalPrice() {
 }
 
 async function displayCart(query) {
+    cartContent.innerHTML = loadingAnimation;
+
     if (localStorage.getItem('basket')) {
         generateNodes();
         await getContent(query).then(items => {
             displayItems(items)
             displayTotalPrice();
         })
+    } else {
+        cartContent.innerHTML = `<div class="row">
+        <div class="col">
+            <div class="container ">
+                <div class="row my-2 shadow border border-danger">
+                    <div class="col m-5">
+                        <h3 class="text-center">Your Basket is empty!</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>`;
     }
     displayCartSpan();
 }

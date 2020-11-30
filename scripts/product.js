@@ -11,7 +11,7 @@ function displayItem(items) {
 
             itemDisplay.innerHTML = `<div class="row my-5">
                 <div class="col-4 my-5 pb-5">
-                    <img src="${item.imageUrl}" alt="${item.name}" class="card-img-top my-4">
+                    <img src="${item.imageUrl}" alt="${item.name}" class="card-img-top my-4 px-5">
                 </div>
                 <div class="col-6">
                     <h1 class="mt-5">${item.name}</h1>
