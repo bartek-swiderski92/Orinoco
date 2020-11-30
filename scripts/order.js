@@ -1,11 +1,7 @@
 // DOM ELEMENTS
-const orderIdEl = document.querySelector('#order-id');
-const orderTotalEl = document.querySelector('#order-total');
-const customerNameEl = document.querySelector('#customer-name');
 const orderSummary = document.querySelector('#order-summary');
 
 const orderDetails = JSON.parse(localStorage.getItem('order'))
-// TODO loading screen
 
 function displayOrderDetails(){
     if (localStorage.getItem('order')){
@@ -17,6 +13,8 @@ function displayOrderDetails(){
         <h3 class="h4">Your Order ID: <span id="order-id"></span></h3>
         <p>Thank you <span id="customer-name"></span> for buying with Ornioco, please check your inbox for order details and tracking!</p>
         </div>`
+        const orderIdEl = document.querySelector('#order-id');
+        const customerNameEl = document.querySelector('#customer-name');
         orderIdEl.textContent = orderDetails.orderId;
         customerNameEl.textContent = orderDetails.contact.firstName;
         addTotalCost();
@@ -29,7 +27,6 @@ function displayOrderDetails(){
         <h1 class="text-danger h3 font-weight-bold">Error! Your request has not been proccessed!</h1>
         <h2 class="h4">Please try again</h2>
         <p>If the problem keeps occuring, contact the website support!</p>
-        
         </div>
         </div>`
     }
@@ -43,6 +40,7 @@ function addTotalCost(){
         totalCost += product.price
     }
     console.log(priceToDollars(totalCost));
+    const orderTotalEl = document.querySelector('#order-total');
     orderTotalEl.textContent = priceToDollars(totalCost)
 }
 
