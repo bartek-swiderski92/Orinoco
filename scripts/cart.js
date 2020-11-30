@@ -1,12 +1,30 @@
+//DOM ELEMENTS
 const cartContent = document.querySelector('#cart-content');
-// const basketSpinner = document.querySelector('#basket-spinner');
-// cartContent.innerHTML = `<div class="text-center p-5">
-// <div class="spinner-border text-primary" id="basket-spinner"role="status">
-//   <span class="sr-only">Loading...</span>
-// </div>
-// </div>`
-// basketSpinner.style.display = 'none'
+//FORM ELEMENTS
+const firstNameInput = document.querySelector('#firstName');
+const lastNameInput = document.querySelector('#lastName');
+const addressInput = document.querySelector('#address');
+const cityInput = document.querySelector('#city');
+const emailInput = document.querySelector('#email');
+const submitOrderBtn = document.querySelector('#submit-order');
+const inputArray = [firstNameInput, lastNameInput, addressInput, cityInput, emailInput]
 
+function formValidation(){
+    let emptyInput = 0;
+    inputArray.forEach(input => {
+        if(input.value){
+            console.table(input.id + ' ' + input.value);
+        } else {
+            console.log(input.id + ' empty');
+            emptyInput++
+        }
+    });
+    console.log('koniec iteracji');
+    if (emptyInput > 0) {
+        alert('Please fill all highlighed fields!')
+
+    }
+}
 function generateNodes() {
     basketContent = JSON.parse(localStorage.getItem('basket'))
     cartContent.innerHTML = '';
@@ -102,34 +120,32 @@ function removeItem(event) {
 
 displayCart(camerasApi);
 
-const submitOrderBtn = document.querySelector('#submit-order');
-
 async function placeOrder(event) {
-
+    formValidation();
     // TODO js validation
-    event.preventDefault();
-    const products = basketContent;
-    const contact = {
-        firstName: document.querySelector('#firstName').value,
-        lastName: document.querySelector('#lastName').value,
-        address: document.querySelector('#address').value,
-        city: document.querySelector('#city').value,
-        email: document.querySelector('#email').value
-    }
-    await fetch(camerasApiOrder, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                contact: contact,
-                products: products
-            })
-        })
-        .then(response => response.json())
-        .then(response => localStorage.setItem('order', JSON.stringify(response)))
-        .then(() => window.location.href = `/order.html`)
-        .catch(error => console.log(error))
+    // event.preventDefault();
+    // const products = basketContent;
+    // const contact = {
+    //     firstName: document.querySelector('#firstName').value,
+    //     lastName: document.querySelector('#lastName').value,
+    //     address: document.querySelector('#address').value,
+    //     city: document.querySelector('#city').value,
+    //     email: document.querySelector('#email').value
+    // }
+    // await fetch(camerasApiOrder, {
+    //         method: "post",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             contact: contact,
+    //             products: products
+    //         })
+    //     })
+    //     .then(response => response.json())
+    //     .then(response => localStorage.setItem('order', JSON.stringify(response)))
+    //     .then(() => window.location.href = `/order.html`)
+    //     .catch(error => console.log(error))
 };
 
 submitOrderBtn.addEventListener('click', placeOrder);
