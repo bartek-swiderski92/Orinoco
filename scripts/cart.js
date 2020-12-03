@@ -9,25 +9,36 @@ const emailInput = document.querySelector('#email');
 const submitOrderBtn = document.querySelector('#submit-order');
 const inputArray = [firstNameInput, lastNameInput, addressInput, cityInput, emailInput]
 
-function formValidation(){
+function formValidation() {
+    function validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
     let emptyInput = 0;
     inputArray.forEach(input => {
-        if(input.value){
-            console.table(input.id + ' ' + input.value);
-        } else {
-            console.log(input.id + ' empty');
+        if (!input.value) {
+            input.classList.add('highlight')
             emptyInput++
+        } else {
+            input.classList.remove('highlight')
         }
     });
-    console.log('koniec iteracji');
-    if (emptyInput > 0) {
-        alert('Please fill all highlighed fields!')
-        // function validateEmail(email) {
-        //     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        //     return re.test(String(email).toLowerCase());
-        
-        }
+    if (!validateEmail(emailInput.value)) {
+        emailInput.classList.add('highlight')
+        alert('Please input correct email address!')
+        return false
+    } else {
+        emailInput.classList.remove('highlight')
+        console.log('correct');
+
     }
+    if (emptyInput > 0) {
+        alert('Please fill all highlighted fields!')
+        return false
+    } else {
+        return true
+    }
+}
 
 function generateNodes() {
     basketContent = JSON.parse(localStorage.getItem('basket'))
@@ -125,9 +136,14 @@ function removeItem(event) {
 displayCart(camerasApi);
 
 async function placeOrder(event) {
-    formValidation();
-    // TODO js validation
-    // event.preventDefault();
+    event.preventDefault();
+    console.log('zaczynam');
+
+    if (formValidation()) {
+        console.log('wykonuje funkcje');
+    } else {
+        console.log('zatrzymanie funkcji');
+    }
     // const products = basketContent;
     // const contact = {
     //     firstName: document.querySelector('#firstName').value,
@@ -153,4 +169,3 @@ async function placeOrder(event) {
 };
 
 submitOrderBtn.addEventListener('click', placeOrder);
-// FIXME Listner on submit?
