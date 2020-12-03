@@ -24,9 +24,9 @@ function displayOrderDetails(){
         orderSummary.innerHTML = `        
         <div class="row">
         <div class="text-center col">
-        <h1 class="text-danger h3 font-weight-bold">Error! Your request has not been proccessed!</h1>
+        <h1 class="text-danger h3 font-weight-bold">Error! Your request has not been processed!</h1>
         <h2 class="h4">Please try again</h2>
-        <p>If the problem keeps occuring, contact the website support!</p>
+        <p>If the problem keeps occurring, contact the website support!</p>
         </div>
         </div>`
     }
