@@ -1,5 +1,8 @@
 //DOM ELEMENTS
 const cartContent = document.querySelector('#cart-content');
+
+const basketContent = JSON.parse(localStorage.getItem('basket'))
+
 //FORM ELEMENTS
 const firstNameInput = document.querySelector('#firstName');
 const lastNameInput = document.querySelector('#lastName');
@@ -37,9 +40,13 @@ function formValidation() {
         return true
     }
 }
+inputArray.forEach(input => {
+    input.addEventListener('input', () => {
+        input.classList.remove('highlight')
+    })
+});
 
 function generateNodes() {
-    basketContent = JSON.parse(localStorage.getItem('basket'))
     cartContent.innerHTML = '';
     for (let i = 0; i < basketContent.length; i++) {
         const itemEl = document.createElement('div');
@@ -101,13 +108,20 @@ function displayTotalPrice() {
 async function displayCart(query) {
     cartContent.innerHTML = loadingAnimation;
 
-    if (localStorage.getItem('basket')) {
+    if (basketContent.length > 0) {
         generateNodes();
         await getContent(query).then(items => {
             displayItems(items)
             displayTotalPrice();
         })
     } else {
+
+        inputArray.forEach(inputElement => {
+            inputElement.setAttribute('disabled', true);
+        });
+        submitOrderBtn.setAttribute('disabled', true);
+        displayTotalPrice();
+
         cartContent.innerHTML = `<div class="row">
         <div class="col">
             <div class="container ">
