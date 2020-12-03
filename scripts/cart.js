@@ -29,8 +29,6 @@ function formValidation() {
         return false
     } else {
         emailInput.classList.remove('highlight')
-        console.log('correct');
-
     }
     if (emptyInput > 0) {
         alert('Please fill all highlighted fields!')
@@ -137,35 +135,32 @@ displayCart(camerasApi);
 
 async function placeOrder(event) {
     event.preventDefault();
-    console.log('zaczynam');
-
     if (formValidation()) {
-        console.log('wykonuje funkcje');
+        const products = basketContent;
+        const contact = {
+            firstName: document.querySelector('#firstName').value,
+            lastName: document.querySelector('#lastName').value,
+            address: document.querySelector('#address').value,
+            city: document.querySelector('#city').value,
+            email: document.querySelector('#email').value
+        }
+        await fetch(camerasApiOrder, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    contact: contact,
+                    products: products
+                })
+            })
+            .then(response => response.json())
+            .then(response => localStorage.setItem('order', JSON.stringify(response)))
+            .then(() => window.location.href = `/order.html`)
+            .catch(error => console.log(error))
     } else {
-        console.log('zatrzymanie funkcji');
+        return
     }
-    // const products = basketContent;
-    // const contact = {
-    //     firstName: document.querySelector('#firstName').value,
-    //     lastName: document.querySelector('#lastName').value,
-    //     address: document.querySelector('#address').value,
-    //     city: document.querySelector('#city').value,
-    //     email: document.querySelector('#email').value
-    // }
-    // await fetch(camerasApiOrder, {
-    //         method: "post",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             contact: contact,
-    //             products: products
-    //         })
-    //     })
-    //     .then(response => response.json())
-    //     .then(response => localStorage.setItem('order', JSON.stringify(response)))
-    //     .then(() => window.location.href = `/order.html`)
-    //     .catch(error => console.log(error))
 };
 
 submitOrderBtn.addEventListener('click', placeOrder);
