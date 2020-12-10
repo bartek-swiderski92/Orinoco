@@ -59,7 +59,7 @@ function unableToLoad() {
 
 async function fetchAndDisplayItem(query) {
     itemDisplay.innerHTML = loadingAnimation;
-    console.log(query);
+    // console.log(query);
     await getContent(query).then(item => {
         displayItem(item);
     }).catch((error) => {

@@ -3,8 +3,8 @@ const orderSummary = document.querySelector('#order-summary');
 
 const orderDetails = JSON.parse(localStorage.getItem('order'))
 
-function displayOrderDetails(){
-    if (localStorage.getItem('order')){
+function displayOrderDetails() {
+    if (localStorage.getItem('order')) {
         orderSummary.innerHTML = `
         <div class="row">
         <div class="text-center col">
@@ -32,19 +32,19 @@ function displayOrderDetails(){
     }
 }
 
-function addTotalCost(){
+function addTotalCost() {
     const productList = orderDetails.products
     let totalCost = 0;
     for (let i = 0; i < productList.length; i++) {
         const product = productList[i];
         totalCost += product.price
     }
-    console.log(priceToDollars(totalCost));
+    // console.log(priceToDollars(totalCost));
     const orderTotalEl = document.querySelector('#order-total');
     orderTotalEl.textContent = priceToDollars(totalCost)
 }
 
-function clearLocalStorage(basket, order){
+function clearLocalStorage(basket, order) {
     localStorage.removeItem(basket);
     localStorage.removeItem(order);
 }
