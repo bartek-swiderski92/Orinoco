@@ -108,7 +108,7 @@ function displayTotalPrice() {
 async function displayCart(query) {
     cartContent.innerHTML = loadingAnimation;
 
-    if (basketContent.length > 0) {
+    if (basketContent && basketContent.length > 0) {
         generateNodes();
         await getContent(query).then(items => {
             displayItems(items)
