@@ -10,6 +10,12 @@ An eCommerce website build by bootstrap, uses javaScript to manipulate DOM and c
 * Interact with a web service using JavaScript
 * Manage website events with JavaScript
 
+### Technologies used:
+* HTML
+* Bootstrap
+* javaScript
+* RestAPI
+
 [External back end repository](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
 ### The project is based on below scenario:
 
