@@ -16,7 +16,7 @@ An eCommerce website built by bootstrap, uses javaScript to manipulate DOM and c
 * javaScript
 * RestAPI
 
-[External back end repository](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
+[External Back-End repository](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
 ### The project is based on below scenario:
 
 >From: Sheila  
