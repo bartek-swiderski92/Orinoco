@@ -5,10 +5,10 @@
 An eCommerce website built by bootstrap, uses javaScript to manipulate DOM and connect with back-end server. An universal code dynamically generating content, depending on the user's input.
 
 ### The project reviews following skills:
-* Ensure data quality using data validation and cleaning
-* Create a test plan for an application
-* Interact with a web service using JavaScript
-* Manage website events with JavaScript
+* Ensures data quality using data validation and cleaning
+* Creates a test plan for an application
+* Interacts with a web service using JavaScript
+* Manages website events with JavaScript
 
 ### Technologies used:
 * HTML
