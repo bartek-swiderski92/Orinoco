@@ -2,7 +2,7 @@
 
 ## **Build an eCommerce Website**
 ![image](https://raw.githubusercontent.com/phos23/BartoszSwiderski_5_11082020_B/main/img/Orinoco_logo.png)  
-An eCommerce website built by bootstrap, uses javaScript to manipulate DOM and connect with back-end server. An universal code dynamically generating content, depending on the user's input.
+An eCommerce website built with bootstrap, uses javaScript to manipulate DOM and connect with back-end server. An universal code dynamically generating content, depending on the user's input.
 
 ### The project reviews following skills:
 * Ensures data quality using data validation and cleaning
