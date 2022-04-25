@@ -45,7 +45,7 @@ An eCommerce website built with bootstrap, uses javaScript to manipulate DOM and
 ### How to run:
 1. Download the [back-end server](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
 2. Run npm install in project location
-     ```json
+     ```
      npm install
      ```
 3. Run node server 
