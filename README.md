@@ -2,6 +2,19 @@
 
 ## **Build an eCommerce Website**
 ![image](https://raw.githubusercontent.com/phos23/BartoszSwiderski_5_11082020_B/main/img/Orinoco_logo.png)  
+<div>
+Desktop homepage and product page: 
+                <br>
+<img width="45%" src="https://raw.githubusercontent.com/bartek-swiderski92/Orinoco/main/snips/homepage.png" />&nbsp;&nbsp;
+<img width="45%" src="https://raw.githubusercontent.com/bartek-swiderski92/Orinoco/main/snips/product_page.png" />&nbsp;&nbsp;
+</div>
+        <div> Mobile Homepage and order confirmation page:  
+                <br>
+<img height="350px" src="https://raw.githubusercontent.com/bartek-swiderski92/Orinoco/main/snips/product_page_mobile.png" />&nbsp;&nbsp;
+<img height="350px" src="https://raw.githubusercontent.com/bartek-swiderski92/Orinoco/main/snips/order_page_mobile.png" />&nbsp;&nbsp;
+
+</div>
+
 An eCommerce website built with bootstrap, uses javaScript to manipulate DOM and connect with back-end server. An universal code dynamically generating content, depending on the user's input.
 
 ### The project reviews following skills:
