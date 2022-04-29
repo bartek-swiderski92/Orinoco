@@ -30,10 +30,6 @@ An eCommerce website built with bootstrap, uses javaScript to manipulate DOM and
         <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />&nbsp;&nbsp;
         <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white">&nbsp;&nbsp;
  </p>
-* HTML
-* Bootstrap
-* javaScript
-* RestAPI
 
 [External Back-End repository](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
 ### The project is based on below scenario:
