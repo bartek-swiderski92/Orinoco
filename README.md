@@ -1,7 +1,17 @@
-# **Fifth project in WebDeveloper path in OpenClassrooms.**
-
-## **Build an eCommerce Website**
 ![image](https://raw.githubusercontent.com/phos23/BartoszSwiderski_5_11082020_B/main/img/Orinoco_logo.png)  
+
+# **An eCommerce website built with Bootstrap and JavaScript.**
+
+<p>
+        <img src="https://img.shields.io/badge/html5%20-%23e34f26.svg?&style=for-the-badge&logo=html5&logoColor=white" />&nbsp;&nbsp;
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />&nbsp;&nbsp;
+        <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white">&nbsp;&nbsp;
+</p>
+ The website manipulates DOM and connects with the back-end server. An universal code dynamically generating content, depending on the user's input.
+
+<br>
+<br>
+
 <div>
 Desktop homepage and product page: 
                 <br>
@@ -15,21 +25,13 @@ Desktop homepage and product page:
 
 </div>
 
-An eCommerce website built with bootstrap, uses javaScript to manipulate DOM and connect with back-end server. An universal code dynamically generating content, depending on the user's input.
+
 
 ### The project reviews following skills:
 * Ensures data quality using data validation and cleaning
 * Creates a test plan for an application
 * Interacts with a web service using JavaScript
 * Manages website events with JavaScript
-
-### Technologies used:
-
-<p>
-        <img src="https://img.shields.io/badge/html5%20-%23e34f26.svg?&style=for-the-badge&logo=html5&logoColor=white" />&nbsp;&nbsp;
-        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />&nbsp;&nbsp;
-        <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white">&nbsp;&nbsp;
- </p>
 
 [External Back-End repository](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
 ### The project is based on below scenario:
